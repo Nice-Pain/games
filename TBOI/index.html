@@ -3,30 +3,36 @@
 <head>
   <title>The Binding of Isaac</title>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-<style>
-html, body {
-  background-color: #000 !important;
-  margin:0px;
-}
-</style>
+  <meta charset="utf8">
+  <style>
+    html, body {
+      background-color: #000 !important;
+      color: #fff;
+      height: 100%;
+      margin: 0;
+    }
+    .container-fluid, .w536ob {
+      height: 100%;
+      width: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
-<body>
-<script>
-window.RufflePlayer = window.RufflePlayer || {};
-
-window.RufflePlayer.config = {
-"autoplay": "on","splashScreen": false,"unmuteOverlay": "hidden","quality": "medium" };
-window.addEventListener("load", (event) => {
-const ruffle = window.RufflePlayer.newest();
-const player = ruffle.createPlayer();
-const container = document.getElementById("container");
-container.appendChild(player);
-player.load("https://nice-pain.github.io/games/TBOI/The%20Binding%20of%20Isaac.swf");
-player.style.width = "100%";
-player.style.height = "100%";
-play();
-});
-</script>
-<div id="container"></div>
-</body>
+<body style="margin: 0px"><div id="container" style="width: 0vw; height: 0vh"><ruffle-player style="width: 100%; height: 100%; display: block;"></ruffle-player></div><script type="text/javascript">function play() {
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+    player.config = {"splashScreen":false,"contextMenu":"off","autoplay":true,"warnOnUnsupportedContent":false,"allowScriptAccess":true,"maxExecutionDuration":30}
+    const container = document.getElementById('container');
+    container.appendChild(player);
+    player.style.cssText = 'width:100%; height: 100%;';
+    player.style.display = 'block';
+    player.load("https://nice-pain.github.io/games/TBOI/The%20Binding%20of%20Isaac.swf").then(() => {
+      window.parent.postMessage({ type: 'ruffleready' }, '*');
+    });
+}
+play();</script></body>
 </html>
